@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WixLocalization Culture="en-us" xmlns="http://schemas.microsoft.com/wix/2006/localization">
 	<String Id="ProductName">WPFComboTest</String>
+	<String Id="ProductFolderName">WPFComboTest</String>
+
 	<String Id="Company">Performance BIM</String>
+
+	<String Id="Description">A Test Description</String>
+	<String Id="Comments">Test Comments</String>
+	<String Id="Keywords">.net, Revit API</String>
+
+	<String Id="DowngradeErrorMessage">A newer version of WPFComboTest is already installed</String>
+
+	<String Id="Language">1033</String>
 </WixLocalization>

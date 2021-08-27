@@ -1,45 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 
-	<?define BuildVersion = 1.2.3.4?>
+	<!--Give product a unique ID-->
+	<?define ProductCode = "{C69392EA-8A03-4A7C-A011-197E40DA372C}"?>
+	
+	<!--Fixed Upgrade ID-->
 	<?define UpgradeCode = "{0BD874F5-AE44-42DB-A6B7-4A73DFCFA4D4}"?>
 
-	<Product Id="2E38DE85-B5B9-44C9-8982-29A0D3E76141" 
+	<?define BuildVersion = 1.2.3.4?>
+
+	<!--Define Main Product-->
+	<Product Id="$(var.ProductCode)" 
 	         Name="!(loc.ProductName)"
-	         Language="1033" 
-	         Codepage ="1252"
+	         Language="!(loc.Language)"
 	         Version="$(var.BuildVersion)" 
 	         Manufacturer= "!(loc.Company)"
 	         UpgradeCode="$(var.UpgradeCode)">
-		<Package Id="*" Keywords="Installer" Description="Performance BIM 1.0 Installer" 
-				 Comments="This is a comment" Manufacturer="Performance BIM"
-		         InstallerVersion="100" Languages="1033" Compressed="yes" InstallScope="perMachine" />
 
-		<Media Id="1" Cabinet="WPFCombo.cab" EmbedCab="yes"/>
-		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-		<!--<MediaTemplate />-->
+		<!--Provide package details-->
+		<Package InstallerVersion="200" 
+		         Compressed="yes" 
+		         InstallScope="perMachine" 
+		         Manufacturer="!(loc.Company)"
+		         Description="!(loc.Description)"
+		         Keywords="!(loc.Keywords)"
+		         Comments="!(loc.Comments)"
+				 Languages="!(loc.Language)"
+		         />
 
+		<!--Downgrade Error Message-->
+		<MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeErrorMessage)"/>
+
+		<!--Include .cab file into .mis file-->
+		<MediaTemplate 
+			EmbedCab="yes"/>
+
+		<!--Define main app icon-->
+		<Icon Id="Icon.ico" SourceFile="$(var.WPFComboTest.ProjectDir)\pb_icon.ico"/>
+
+		<!--Use the icon.ico icon for this installer (shows up in Add/Remove Programs)-->
+		<Property Id="APPPRODUCTICON">Icon.ico</Property>
+
+		<!--Help/Support website (shows in the add/remove programs-->
+		<Property Id="APPURLINFOABOUT">http://www.performancebim.com</Property>
+
+		<!--Create a basic UI for the installer-->
+		<UIRef Id="WixUI_Minimal"/>
+
+		<!--Change the installer ui background images-->
+		<WixVariable Id="WixUIDialogBmp" Value="$(var.ProjectDir)\Assets\background.bmp"/>
+		<WixVariable Id="WixUIBannerBmp" Value="$(var.ProjectDir)\Assets\banner.bmp"/>
+		<WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\Assets\license.rtf"/>
+
+		<!--need to create bitmap image - background.bmp is 493 x 312  / banner.bmp is 493 x 58-->
+
+		<!--Define components, shortcuts, files, etc... for installer-->
 		<Feature Id="ProductFeature" Title="WPFCombo" Level="1">
+			
 			<ComponentGroupRef Id="ProductComponents" />
+
 		</Feature>
 	</Product>
-
-	<Fragment>
-		<Directory Id="TARGETDIR" Name="SourceDir">
-			<Directory Id="ProgramFilesFolder">
-				<Directory Id="INSTALLFOLDER" Name="WPFCombo" />
-			</Directory>
-		</Directory>
-	</Fragment>
-
-	<Fragment>
-		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
-			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
-			 <Component Id="ProductComponent"> 
-				<File Source="$(var.WPFComboTest.TargetPath)"/>
-			 </Component> 
-		</ComponentGroup>
-	</Fragment>
 
 
 </Wix>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+		<ComponentGroup Id="ProductComponents">
+
+			<ComponentRef Id="TestFile"/>
+
+		</ComponentGroup>
+
+		<DirectoryRef Id="INSTALLFOLDER" FileSource="..\WPFComboTest\bin\Debug">
+			<Component Id="TestFile" Guid="{9E052901-B220-4D56-A52F-1D88012D0D75}">
+				<File Id="FileTestFile" Name="WPFComboTest.exe" KeyPath="yes"></File>
+
+				<!--Remove Start Menu Items-->
+				<RemoveFolder Id="RemoveStartMenu" Directory="InstallProgramMenuFolder" On="uninstall"/>
+
+			</Component>
+		</DirectoryRef>
+
+	</Fragment>
+
+
+
+
+</Wix>
