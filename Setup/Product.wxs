@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+	<?define BuildVersion = 1.2.3.4?>
+	<?define UpgradeCode = "{0BD874F5-AE44-42DB-A6B7-4A73DFCFA4D4}"?>
+
+	<Product Id="2E38DE85-B5B9-44C9-8982-29A0D3E76141" 
+	         Name="!(loc.ProductName)"
+	         Language="1033" 
+	         Codepage ="1252"
+	         Version="$(var.BuildVersion)" 
+	         Manufacturer= "!(loc.Company)"
+	         UpgradeCode="$(var.UpgradeCode)">
+		<Package Id="*" Keywords="Installer" Description="Performance BIM 1.0 Installer" 
+				 Comments="This is a comment" Manufacturer="Performance BIM"
+		         InstallerVersion="100" Languages="1033" Compressed="yes" InstallScope="perMachine" />
+
+		<Media Id="1" Cabinet="WPFCombo.cab" EmbedCab="yes"/>
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<!--<MediaTemplate />-->
+
+		<Feature Id="ProductFeature" Title="WPFCombo" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="WPFCombo" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+			 <Component Id="ProductComponent"> 
+				<File Source="$(var.WPFComboTest.TargetPath)"/>
+			 </Component> 
+		</ComponentGroup>
+	</Fragment>
+
+
+</Wix>
