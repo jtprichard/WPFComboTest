@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ComboBox WVVM Test" Height="300" Width="300">
     <StackPanel HorizontalAlignment="Left">
-        <TextBlock Padding="50,20,20,20">ComboBox Test</TextBlock>
+        <TextBlock Padding="50,20,20,20">ComboBox Test Version 11!</TextBlock>
         <ComboBox Name="TestCombo"
                   Width="150"
                   Height="20"

@@ -2,12 +2,10 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 
 	<!--Give product a unique ID-->
-	<?define ProductCode = "{C69392EA-8A03-4A7C-A011-197E40DA372C}"?>
+	<?define ProductCode = "{EF222691-9C95-4276-ABB6-F0234C26E190}"?>
 	
 	<!--Fixed Upgrade ID-->
 	<?define UpgradeCode = "{0BD874F5-AE44-42DB-A6B7-4A73DFCFA4D4}"?>
-
-	<?define BuildVersion = 1.2.3.4?>
 
 	<!--Define Main Product-->
 	<Product Id="$(var.ProductCode)" 
@@ -39,10 +37,10 @@
 		<Icon Id="Icon.ico" SourceFile="$(var.WPFComboTest.ProjectDir)\pb_icon.ico"/>
 
 		<!--Use the icon.ico icon for this installer (shows up in Add/Remove Programs)-->
-		<Property Id="APPPRODUCTICON">Icon.ico</Property>
+		<Property Id="ARPPRODUCTICON">Icon.ico</Property>
 
 		<!--Help/Support website (shows in the add/remove programs-->
-		<Property Id="APPURLINFOABOUT">http://www.performancebim.com</Property>
+		<Property Id="ARPURLINFOABOUT">http://www.performancebim.com</Property>
 
 		<!--Create a basic UI for the installer-->
 		<UIRef Id="WixUI_Minimal"/>
@@ -58,6 +56,7 @@
 		<Feature Id="ProductFeature" Title="WPFCombo" Level="1">
 			
 			<ComponentGroupRef Id="ProductComponents" />
+			<!--<ComponentGroupRef Id="PublishedComponents" />-->
 
 		</Feature>
 	</Product>

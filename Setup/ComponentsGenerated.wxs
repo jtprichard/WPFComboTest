@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="INSTALLFOLDER">
+            <Component Id="cmp6FFBD252CB24F56658461D3A317D94A2" Guid="{90F0E2B6-3B32-4921-B4B2-7098D1393F38}">
+                <File Id="fil2A55670AD185ECE4F69C78828E0894C2" KeyPath="yes" Source="$(var.BasePath)\WPFComboTest.exe" />
+            </Component>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="PublishedComponents">
+            <ComponentRef Id="cmp6FFBD252CB24F56658461D3A317D94A2" />
+        </ComponentGroup>
+    </Fragment>
+</Wix>
