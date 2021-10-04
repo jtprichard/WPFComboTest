@@ -1,7 +1,8 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
+using WPFComboTest.Core;
 
-
-namespace WPFComboTest
+namespace WPFComboTest.UI
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -24,6 +25,24 @@ namespace WPFComboTest
         private void UpdateVMSelectedItem_Click(object sender, RoutedEventArgs e)
         {
             _instance.SelectedComboItem = _instance.ComboItems[0];
+        }
+
+        private void EditListValue_OnClick(object sender, RoutedEventArgs e)
+        {
+            var value = ListValue.Text;
+            var dialog = new InputDialog("Modify List Item", value);
+            if (dialog.ShowDialog() == true)
+                ListValue.Text = dialog.Answer;
+
+
+        }
+
+        private void AddListValue_OnClick(object sender, RoutedEventArgs e)
+        {
+            List.UnselectAll();
+            var dialog = new InputDialog("Add Venue", "");
+            if (dialog.ShowDialog() == true)
+                ListValue.Text = dialog.Answer;
         }
     }
 }
