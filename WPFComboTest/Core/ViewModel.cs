@@ -19,8 +19,16 @@ namespace WPFComboTest.Core
         private ListItem _selectedListItem;
         private string _selectedListValue;
 
+        private bool _openDialog;
+
         private ICommand openDialogCommand = null;
 
+
+        public bool OpenDialog
+        {
+            get { return _openDialog; }
+            set { _openDialog = value; OnPropertyChanged(nameof(OpenDialog)); }
+        }
 
         public ICommand OpenDialogCommand
         {
@@ -86,10 +94,12 @@ namespace WPFComboTest.Core
 
         private void OnOpenDialog(object parameter)
         {
-            UI.InputDialog dialog = new UI.InputDialog( "Question", "");
-            string result;
-            if (dialog.ShowDialog() == true)
-                result = dialog.Answer;
+            OpenDialog = true;
+
+            //UI.InputDialog dialog = new UI.InputDialog( "Question", "");
+            //string result;
+            //if (dialog.ShowDialog() == true)
+            //    result = dialog.Answer;
 
             //Dialogs.DialogService.DialogViewModelBase vm =
             //    new Dialogs.DialogYesNo.DialogYesNoViewModel("Question");

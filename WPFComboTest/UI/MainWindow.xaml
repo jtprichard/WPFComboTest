@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFComboTest.UI"
         mc:Ignorable="d"
-        Title="ComboBox WVVM Test" Height="350" Width="500">
+        Title="ComboBox WVVM Test" Height="450" Width="500">
     
     
      <StackPanel>
@@ -77,14 +77,14 @@
                     Edit List Item
                 </Button>
 
-                <!--<Button Name="EditListValue"
+                <Button Name="TestListValue"
                         Width="auto"
                         Height="30"
                         Margin="0,20,50,0"
                         Command="{Binding OpenDialogCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
-                    Edit List Item
-                </Button>-->
+                    Test Button
+                </Button>
 
                 <!--<Button Name="EditListValue"
                         Width="auto"
