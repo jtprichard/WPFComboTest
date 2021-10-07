@@ -1,25 +1,30 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Documents.DocumentStructures;
 using System.Windows.Input;
+using Prism.Mvvm;
+using Prism.Services.Dialogs;
 using WPFComboTest.Data;
 
 
 
-namespace WPFComboTest.Core
+namespace WPFComboTest.ViewModelTest
 {
-    public class ViewModel : BaseViewModel
+    public class MainWindowViewModel : BindableBase
     {
         ObservableCollection<ComboItem> _comboItems;
         ComboItem _selectedComboItem;
+        private IDialogService _dialogService;
 
         private ObservableCollection<ListItem> _listItems;
         private ListItem _selectedListItem;
         private string _selectedListValue;
 
         private ICommand openDialogCommand = null;
+
 
 
         public ICommand OpenDialogCommand
@@ -31,19 +36,22 @@ namespace WPFComboTest.Core
         public ObservableCollection<ComboItem> ComboItems
         {
             get { return _comboItems; }
-            set { _comboItems = value; OnPropertyChanged("ComboItems"); }
+            set { _comboItems = value; }
+            //set { _comboItems = value; OnPropertyChanged("ComboItems"); }
         }
 
         public ComboItem SelectedComboItem
         {
             get { return _selectedComboItem; }
-            set { _selectedComboItem = ComboValidation(value); OnPropertyChanged("SelectedComboItem"); }
+            set { _selectedComboItem = ComboValidation(value); }
+            //set { _selectedComboItem = ComboValidation(value); OnPropertyChanged("SelectedComboItem"); }
         }
 
         public ObservableCollection<ListItem> ListItems
         {
             get { return _listItems; }
-            set { _listItems = value; OnPropertyChanged(nameof(ListItems)); }
+            set { _listItems = value; }
+            //set { _listItems = value; OnPropertyChanged(nameof(ListItems)); }
         }
 
         public ListItem SelectedListItem
@@ -52,8 +60,8 @@ namespace WPFComboTest.Core
             set
             {
                 _selectedListItem = value;
-                OnPropertyChanged(nameof(SelectedListItem));
-                OnPropertyChanged(nameof(SelectedListValue));
+                //OnPropertyChanged(nameof(SelectedListItem));
+                //OnPropertyChanged(nameof(SelectedListValue));
             }
         }
 
@@ -68,13 +76,14 @@ namespace WPFComboTest.Core
             set
             {
                 UpdateList(value);
-                OnPropertyChanged(nameof(ListItems));
-                OnPropertyChanged(nameof(SelectedListItem));
-                OnPropertyChanged(nameof(SelectedListValue));
+                //OnPropertyChanged(nameof(ListItems));
+                //OnPropertyChanged(nameof(SelectedListItem));
+                //OnPropertyChanged(nameof(SelectedListValue));
             }
         }
-        public ViewModel()
+        public MainWindowViewModel(IDialogService dialogService)
         {
+            _dialogService = dialogService;
             openDialogCommand = new RelayCommand(OnOpenDialog);
 
             ComboItems = ComboItem.Populate();
@@ -86,10 +95,31 @@ namespace WPFComboTest.Core
 
         private void OnOpenDialog(object parameter)
         {
-            UI.InputDialog dialog = new UI.InputDialog( "Question", "");
-            string result;
-            if (dialog.ShowDialog() == true)
-                result = dialog.Answer;
+            string result = "";
+            var message = "This is a message that should be shown in the dialog.";
+
+            _dialogService.ShowDialog("PrismInputDialog", new DialogParameters($"question={message}"), r =>
+            {
+                
+            });
+
+            //using the dialog service as-is
+            //_dialogService.ShowDialog("PrismInputDialog", new DialogParameters($"message={message}"), r =>
+            //{
+            //    if (r.Result == ButtonResult.None)
+            //        result = "Result is None";
+            //    else if (r.Result == ButtonResult.OK)
+            //        result = "Result is OK";
+            //    else if (r.Result == ButtonResult.Cancel)
+            //        result = "Result is Cancel";
+            //    else
+            //        result = "I Don't know what you did!?";
+            //});
+
+            //UI.InputDialog dialog = new UI.InputDialog( "Question", "");
+            //string result;
+            //if (dialog.ShowDialog() == true)
+            //    result = dialog.Answer;
 
             //Dialogs.DialogService.DialogViewModelBase vm =
             //    new Dialogs.DialogYesNo.DialogYesNoViewModel("Question");

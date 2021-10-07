@@ -1,20 +1,20 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using WPFComboTest.Core;
+using WPFComboTest.ViewModelTest;
 
-namespace WPFComboTest.UI
+namespace WPFComboTest.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static ViewModel _instance;
+        private static MainWindowViewModel _instance;
         public MainWindow()
         {
             InitializeComponent();
-            _instance = new ViewModel();
-            DataContext = _instance;
+            //_instance = new ViewModel();
+            //DataContext = _instance;
         }
 
         private void ShowComboItem_Click(object sender, RoutedEventArgs e)

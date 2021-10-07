@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WPFComboTest.UI
+namespace WPFComboTest.Views
 {
     /// <summary>
     /// Interaction logic for Inputdialog.xaml

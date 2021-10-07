@@ -1,9 +1,9 @@
-﻿<Window x:Class="WPFComboTest.UI.MainWindow"
+﻿<Window x:Class="WPFComboTest.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPFComboTest.UI"
+        xmlns:local="clr-namespace:WPFComboTest.Views"
         mc:Ignorable="d"
         Title="ComboBox WVVM Test" Height="350" Width="500">
     
@@ -98,8 +98,9 @@
                         Width="auto"
                         Height="30"
                         Margin="0,10,50,0"
-                        Click="AddListValue_OnClick">
-                    Add List Item
+                        Click="AddListValue_OnClick"
+                        Content="Add List Item">
+
                 </Button>
 
 

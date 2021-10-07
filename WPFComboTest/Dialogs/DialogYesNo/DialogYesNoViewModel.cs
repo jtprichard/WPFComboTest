@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using WPFComboTest.Core;
+using WPFComboTest.ViewModelTest;
 using WPFComboTest.Dialogs.DialogService;
 
 namespace WPFComboTest.Dialogs.DialogYesNo
