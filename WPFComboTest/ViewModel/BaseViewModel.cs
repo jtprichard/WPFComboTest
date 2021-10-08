@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace WPFComboTest.Core
+namespace WPFComboTest.ViewModel
 {
     /// <summary>
     /// Base View Model for Property Changed Events

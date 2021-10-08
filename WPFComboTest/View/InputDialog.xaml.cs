@@ -12,35 +12,37 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MvvmDialogs;
 
-namespace WPFComboTest.UI
+namespace WPFComboTest.View
 {
     /// <summary>
     /// Interaction logic for Inputdialog.xaml
     /// </summary>
     public partial class InputDialog : Window
     {
-        public InputDialog(string question, string defaultAnswer = "")
+        //public InputDialog(string question, string defaultAnswer = "")
+        public InputDialog()
         {
             InitializeComponent();
-            lblQuestion.Content = question;
-            txtAnswer.Text = defaultAnswer;
+            //lblQuestion.Content = question;
+            //txtAnswer.Text = defaultAnswer;
         }
 
         private void btnDialogOk_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
+            //this.DialogResult = true;
         }
 
         private void Window_ContentRendered(object sender, EventArgs e)
         {
-            txtAnswer.SelectAll();
-            txtAnswer.Focus();
+            //txtAnswer.SelectAll();
+            //txtAnswer.Focus();
         }
 
-        public string Answer
-        {
-            get { return txtAnswer.Text; }
-        }
-	}
+        //public string Answer
+        //{
+        //    //get { return txtAnswer.Text; }
+        //}
+    }
 }

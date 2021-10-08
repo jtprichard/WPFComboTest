@@ -1,12 +1,17 @@
-﻿<Window x:Class="WPFComboTest.UI.InputDialog"
+﻿<Window x:Class="WPFComboTest.View.InputDialog"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPFComboTest.UI"
+             xmlns:local="clr-namespace:WPFComboTest.View"
              mc:Ignorable="d" 
-             Title="Input" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen"
-             ContentRendered="Window_ContentRendered">
+             WindowStartupLocation="CenterOwner"
+             SizeToContent="WidthAndHeight"
+             ResizeMode="NoResize"
+             xmlns:md="https://github.com/fantasticfiasco/mvvm-dialogs" 
+             xmlns:viewmodel="clr-namespace:WPFComboTest.ViewModel"
+             md:DialogServiceViews.IsRegistered="True"
+             d:DataContext="{d:DesignInstance {x:Type viewmodel:InputDialogViewModel}}">
 
 
      <!--<StackPanel Background="{StaticResource MainBorderBrush}">-->

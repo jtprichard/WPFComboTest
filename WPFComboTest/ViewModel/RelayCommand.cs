@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace WPFComboTest.Core
+namespace WPFComboTest.ViewModel
 {
     /// <summary>
     /// Routes Commands to the ICommand Interface
