@@ -6,8 +6,10 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using Prism.Ioc;
 using Prism.Mvvm;
+using Prism.Regions;
 using Prism.Unity;
 using WPFComboTest.ViewModelTest;
 using WPFComboTest.Views;
@@ -24,11 +26,19 @@ namespace WPFComboTest
             containerRegistry.RegisterDialog<PrismInputDialog, PrismDialogViewModel>();
         }
 
+        //protected override Window CreateShell()
+        //{
+        //    var w = Container.Resolve<MainWindow>();
+        //    return w;
+        //}
+
         protected override Window CreateShell()
         {
-            var w = Container.Resolve<MainWindow>();
-            return w;
+
+            return null;
         }
+
+
 
         protected override void ConfigureViewModelLocator()
         {
